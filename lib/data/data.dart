@@ -36,7 +36,7 @@ List<Map<String, dynamic>> transactionsData = [
   },
   {
     'icon': const FaIcon(FontAwesomeIcons.gamepad, color: Colors.white),
-    'color': Colors.blue,
+    'color': Colors.red,
     'name': 'Fun',
     'totalAmount': '-\$ 200.00',
     'date': ' Yesterday',
