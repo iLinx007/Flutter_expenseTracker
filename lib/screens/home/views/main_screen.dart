@@ -229,7 +229,7 @@ class MainScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: 7,
                 itemBuilder: (context, int i) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
