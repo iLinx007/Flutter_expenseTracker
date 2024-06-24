@@ -16,6 +16,16 @@ class _AddExpenseState extends State<AddExpense> {
   TextEditingController dateController = TextEditingController();
   DateTime selectDate = DateTime.now();
 
+  List<String> myCategoriesIcons = [
+    'entertainment',
+    'food',
+    'home',
+    'tech',
+    'travel',
+    'shopping',
+    'pet',
+  ];
+
   @override
   void initState() {
     dateController.text = DateFormat('EEE dd/MM/yyyy').format(DateTime.now());
@@ -157,7 +167,9 @@ class _AddExpenseState extends State<AddExpense> {
                                       ),
                                       isExpanded
                                           ? Container(
-                                              width: double.infinity,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
                                               height: 200,
                                               decoration: const BoxDecoration(
                                                   color: Colors.white,
@@ -166,6 +178,23 @@ class _AddExpenseState extends State<AddExpense> {
                                                           bottom:
                                                               Radius.circular(
                                                                   12))),
+                                              child: GridView.builder(
+                                                  gridDelegate:
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 3),
+                                                  itemCount:
+                                                      myCategoriesIcons.length,
+                                                  itemBuilder:
+                                                      (context, int i) {
+                                                    return Container(
+                                                      width: 50,
+                                                      height: 50,
+                                                      decoration: BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  'assets/${myCategoriesIcons[i]}.png'))),
+                                                    );
+                                                  }),
                                             )
                                           : Container(),
                                       const SizedBox(
