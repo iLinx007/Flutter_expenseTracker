@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -85,86 +86,120 @@ class _AddExpenseState extends State<AddExpense> {
                         showDialog(
                             context: context,
                             builder: (ctx) {
-                              return AlertDialog(
-                                title: const Text(
-                                  "Create a new category",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    TextFormField(
-                                      // controller: dateController,
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
-                                      // readOnly: true,
+                              bool isExpanded = false;
+                              return StatefulBuilder(
+                                  builder: (context, setState) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Create a new category",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextFormField(
+                                        // controller: dateController,
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        // readOnly: true,
 
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        // prefixIcon: const Icon(
-                                        //   FontAwesomeIcons.person,
-                                        //   size: 16,
-                                        //   color: Colors.grey,
-                                        // ),
-                                        hintText: 'Name',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            borderSide: BorderSide.none),
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          // prefixIcon: const Icon(
+                                          //   FontAwesomeIcons.person,
+                                          //   size: 16,
+                                          //   color: Colors.grey,
+                                          // ),
+                                          hintText: 'Name',
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              borderSide: BorderSide.none),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 12,
-                                    ),
-                                    TextFormField(
-                                      // controller: dateController,
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
-                                      // readOnly: true,
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      TextFormField(
+                                        onTap: () {
+                                          setState(() {
+                                            isExpanded = !isExpanded;
+                                          });
+                                        },
+                                        // controller: dateController,
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        readOnly: true,
 
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        // prefixIcon: const Icon(
-                                        //   FontAwesomeIcons.person,
-                                        //   size: 16,
-                                        //   color: Colors.grey,
-                                        // ),
-                                        hintText: 'Color',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            borderSide: BorderSide.none),
+                                        decoration: InputDecoration(
+                                          suffixIcon: const Icon(
+                                            CupertinoIcons.chevron_down,
+                                            size: 12,
+                                          ),
+                                          isDense: true,
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          // prefixIcon: const Icon(
+                                          //   FontAwesomeIcons.person,
+                                          //   size: 16,
+                                          //   color: Colors.grey,
+                                          // ),
+                                          hintText: 'Icon',
+                                          border: OutlineInputBorder(
+                                              borderRadius: isExpanded
+                                                  ? const BorderRadius.vertical(
+                                                      top: Radius.circular(12))
+                                                  : BorderRadius.circular(12),
+                                              borderSide: BorderSide.none),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 12,
-                                    ),
-                                    TextFormField(
-                                      // controller: dateController,
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
-                                      // readOnly: true,
+                                      isExpanded
+                                          ? Container(
+                                              width: double.infinity,
+                                              height: 200,
+                                              decoration: const BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.vertical(
+                                                          bottom:
+                                                              Radius.circular(
+                                                                  12))),
+                                            )
+                                          : Container(),
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      TextFormField(
+                                        // controller: dateController,
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        // readOnly: true,
 
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        // prefixIcon: const Icon(
-                                        //   FontAwesomeIcons.person,
-                                        //   size: 16,
-                                        //   color: Colors.grey,
-                                        // ),
-                                        hintText: 'Icon',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            borderSide: BorderSide.none),
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          // prefixIcon: const Icon(
+                                          //   FontAwesomeIcons.person,
+                                          //   size: 16,
+                                          //   color: Colors.grey,
+                                          // ),
+                                          hintText: 'Color',
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              borderSide: BorderSide.none),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              );
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
                             });
                       },
                       icon: const Icon(
