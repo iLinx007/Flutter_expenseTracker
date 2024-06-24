@@ -70,6 +70,8 @@ class _AddExpenseState extends State<AddExpense> {
               TextFormField(
                 controller: categoryController,
                 textAlignVertical: TextAlignVertical.center,
+                readOnly: true,
+                onTap: () {},
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -79,7 +81,92 @@ class _AddExpenseState extends State<AddExpense> {
                     color: Colors.grey,
                   ),
                   suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (ctx) {
+                              return AlertDialog(
+                                title: const Text(
+                                  "Create a new category",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextFormField(
+                                      // controller: dateController,
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      // readOnly: true,
+
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        // prefixIcon: const Icon(
+                                        //   FontAwesomeIcons.person,
+                                        //   size: 16,
+                                        //   color: Colors.grey,
+                                        // ),
+                                        hintText: 'Name',
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            borderSide: BorderSide.none),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 12,
+                                    ),
+                                    TextFormField(
+                                      // controller: dateController,
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      // readOnly: true,
+
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        // prefixIcon: const Icon(
+                                        //   FontAwesomeIcons.person,
+                                        //   size: 16,
+                                        //   color: Colors.grey,
+                                        // ),
+                                        hintText: 'Color',
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            borderSide: BorderSide.none),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 12,
+                                    ),
+                                    TextFormField(
+                                      // controller: dateController,
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      // readOnly: true,
+
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        // prefixIcon: const Icon(
+                                        //   FontAwesomeIcons.person,
+                                        //   size: 16,
+                                        //   color: Colors.grey,
+                                        // ),
+                                        hintText: 'Icon',
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            borderSide: BorderSide.none),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            });
+                      },
                       icon: const Icon(
                         FontAwesomeIcons.plus,
                         size: 16,
