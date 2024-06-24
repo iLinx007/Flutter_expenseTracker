@@ -233,7 +233,7 @@ class MainScreen extends StatelessWidget {
                 itemCount: transactionsData.length,
                 itemBuilder: (context, int i) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
+                    padding: const EdgeInsets.only(bottom: 12.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
