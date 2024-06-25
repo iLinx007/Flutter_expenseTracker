@@ -257,7 +257,7 @@ class _AddExpenseState extends State<AddExpense> {
                                                     children: [
                                                       ColorPicker(
                                                         pickerColor:
-                                                            Colors.blue,
+                                                            categoryColor,
                                                         onColorChanged:
                                                             (value) {
                                                           setState(() {
@@ -309,6 +309,29 @@ class _AddExpenseState extends State<AddExpense> {
                                                   BorderRadius.circular(12),
                                               borderSide: BorderSide.none),
                                         ),
+                                      ),
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        height: kToolbarHeight,
+                                        child: TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            style: TextButton.styleFrom(
+                                                backgroundColor: Colors.black,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12))),
+                                            child: const Text(
+                                              "Save New Category",
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  color: Colors.white),
+                                            )),
                                       ),
                                       const SizedBox(
                                         height: 12,
