@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-
 import 'category_creation.dart';
 
 class AddExpense extends StatefulWidget {
@@ -94,11 +93,35 @@ class _AddExpenseState extends State<AddExpense> {
                         color: Colors.grey,
                       )),
                   hintText: 'Category',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  border: const OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(12)),
                       borderSide: BorderSide.none),
                 ),
               ),
+              Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  // color: Colors.red,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(12)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, int i) {
+                          return Card(
+                              child: ListTile(
+                            leading: Image.asset(
+                              'assets/food.png',
+                              scale: 2,
+                            ),
+                          ));
+                        }),
+                  )),
               const SizedBox(
                 height: 16,
               ),
