@@ -1,7 +1,10 @@
 import 'dart:math';
 
+import 'package:expense_repository/expense_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tes/screens/add_expense/blocs/create_category/create_category_bloc.dart';
 import 'package:tes/screens/add_expense/views/add_expense.dart';
 import 'package:tes/screens/home/views/main_screen.dart';
 
@@ -54,7 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const AddExpense(),
+                builder: (BuildContext context) => BlocProvider(
+                  create: (context) =>
+                      CreateCategoryBloc(FirebaseExpenseRepo()),
+                  child: const AddExpense(),
+                ),
               ),
             );
           },

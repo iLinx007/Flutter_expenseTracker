@@ -29,7 +29,7 @@ class CategoryEntity {
       name: doc['name'],
       totalExpenses: doc['totalExpenses'],
       icon: doc['icon'],
-      color: doc['colo'],
+      color: doc['color'],
     );
   }
 }
