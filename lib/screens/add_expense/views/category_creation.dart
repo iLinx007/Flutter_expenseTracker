@@ -17,6 +17,9 @@ getCategoryCreation(BuildContext context) {
     'travel',
     'shopping',
     'pet',
+    'utilities',
+    'savings',
+    'emergency',
   ];
   return showDialog(
       context: context,
@@ -229,7 +232,7 @@ getCategoryCreation(BuildContext context) {
                                 Category category = Category.empty;
                                 category.categoryId = const Uuid().v1();
                                 category.name = categoryNameController.text;
-                                category.color = categoryColor.toString();
+                                category.color = categoryColor.value;
                                 category.icon = iconSelected;
                                 context
                                     .read<CreateCategoryBloc>()

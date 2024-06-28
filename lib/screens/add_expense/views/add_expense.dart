@@ -1,8 +1,10 @@
 // ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:tes/screens/add_expense/blocs/get_categories/get_categories_bloc.dart';
 import 'category_creation.dart';
 
 class AddExpense extends StatefulWidget {
@@ -110,21 +112,31 @@ class _AddExpenseState extends State<AddExpense> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder(
-                        itemCount: 5,
-                        itemBuilder: (context, int i) {
-                          return Card(
-                              child: ListTile(
-                            leading: Image.asset(
-                              'assets/food.png',
-                              scale: 2,
-                            ),
-                            title: const Text('Food'),
-                            tileColor: Colors.red,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                          ));
-                        }),
+                    child: BlocBuilder<GetCategoriesBloc, GetCategoriesState>(
+                      builder: (context, state) {
+                        if (state is GetCategoriesSuccess) {
+                          return ListView.builder(
+                              itemCount: state.categories.length,
+                              itemBuilder: (context, int i) {
+                                return Card(
+                                    child: ListTile(
+                                  leading: Image.asset(
+                                    'assets/${state.categories[i].icon}.png',
+                                    scale: 2,
+                                  ),
+                                  title: Text(state.categories[i].name),
+                                  tileColor: Color(state.categories[i].color),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                ));
+                              });
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
                   )),
               const SizedBox(
                 height: 16,
