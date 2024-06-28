@@ -104,7 +104,7 @@ class _AddExpenseState extends State<AddExpense> {
                   width: MediaQuery.of(context).size.width,
                   // color: Colors.red,
                   decoration: const BoxDecoration(
-                    color: Colors.red,
+                    color: Colors.white,
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(12)),
                   ),
@@ -119,6 +119,10 @@ class _AddExpenseState extends State<AddExpense> {
                               'assets/food.png',
                               scale: 2,
                             ),
+                            title: const Text('Food'),
+                            tileColor: Colors.red,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                           ));
                         }),
                   )),
