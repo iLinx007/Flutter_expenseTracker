@@ -9,6 +9,7 @@ import 'package:tes/screens/add_expense/blocs/get_categories/get_categories_bloc
 import 'package:tes/screens/add_expense/views/add_expense.dart';
 import 'package:tes/screens/home/views/main_screen.dart';
 
+import '../../add_expense/blocs/create_expense/create_expense_bloc.dart';
 import '../../stats/stats.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,6 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       create: (context) =>
                           GetCategoriesBloc(FirebaseExpenseRepo())
                             ..add(GetCategories()),
+                    ),
+                    BlocProvider(
+                      create: (context) =>
+                          CreateExpenseBloc(FirebaseExpenseRepo()),
                     ),
                   ],
                   child: const AddExpense(),
