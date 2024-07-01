@@ -20,6 +20,7 @@ Future getCategoryCreation(BuildContext context) {
     'utilities',
     'savings',
     'emergency',
+    'fun'
   ];
   return showDialog(
       context: context,
